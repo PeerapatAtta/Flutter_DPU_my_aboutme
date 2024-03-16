@@ -277,6 +277,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  video_url_validator:
+    dependency: "direct main"
+    description:
+      name: video_url_validator
+      sha256: c0738593f59b7f67366b40366e51df894f07873aa92b6d06556ea945091dceb9
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   vm_service:
     dependency: transitive
     description:
