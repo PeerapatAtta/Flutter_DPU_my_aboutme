@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_aboutme/homePage.dart';
 import 'package:my_aboutme/profile.dart';
+import 'package:my_aboutme/videoPresentation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: const MyHomePage(title: 'My About me'),
       routes: <String, WidgetBuilder>{
-        'profile':(BuildContext context) => Profile()
+        'profile':(BuildContext context) => Profile(),
+        'video_presentation':(BuildContext context) => VideoPresentation()
       },
     );
   }
