@@ -95,7 +95,9 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(0),
                     color: Color.fromRGBO(114, 165, 246, 1),
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'my_map');
+                        },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

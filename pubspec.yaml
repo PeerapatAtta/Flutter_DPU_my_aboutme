@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   youtube_player_flutter: ^9.0.0
   video_url_validator: ^1.0.3
+  google_maps_flutter: ^2.6.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_aboutme/homePage.dart';
+import 'package:my_aboutme/myMap.dart';
 import 'package:my_aboutme/profile.dart';
 import 'package:my_aboutme/videoPresentation.dart';
 
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'My About me'),
       routes: <String, WidgetBuilder>{
         'profile':(BuildContext context) => Profile(),
-        'video_presentation':(BuildContext context) => VideoPresentation()
+        'video_presentation':(BuildContext context) => VideoPresentation(),
+        'my_map':(BuildContext context) => MyMap(),
       },
     );
   }

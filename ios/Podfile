@@ -1,0 +1,2 @@
+platform :ios, '13.0' # Uncomment and set to 13.
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'

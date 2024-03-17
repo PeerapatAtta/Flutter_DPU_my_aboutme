@@ -3,6 +3,15 @@
         android:label="my_aboutme"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- TODO: Add your Google Maps API key here -->
+<meta-data android:name="com.google.android.geo.API_KEY"
+android:value="AIzaSyDJ2pIJcWPOy4kqhTml_9OmyMD0VcC7K9s"/>
+
+
+
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
