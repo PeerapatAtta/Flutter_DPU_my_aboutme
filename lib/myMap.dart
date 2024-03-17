@@ -10,8 +10,12 @@ class MyMap extends StatefulWidget {
 
 class _MyMapState extends State<MyMap> {
   late GoogleMapController mapController;
-  
 
+  final LatLng center = LatLng(13.736717, 100.523186);
+
+  void onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,29 @@ class _MyMapState extends State<MyMap> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('My Map'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: GoogleMap(
+                  mapType: MapType.normal,
+                  onMapCreated: onMapCreated,
+                  initialCameraPosition: CameraPosition(
+                    target: center,
+                    zoom: 13.0,
+                  ),
+                  markers: {
+                    Marker(
+                      markerId: MarkerId('Home'),
+                      position: center,
+                      )
+                  },
+                ),
+              ))
+        ],
       ),
     );
   }
