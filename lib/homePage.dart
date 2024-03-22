@@ -143,6 +143,59 @@ class _HomePageState extends State<HomePage> {
                           ],
                         )),
                   ),
+                  Container(
+                    padding: EdgeInsets.all(0),
+                    color: Color.fromRGBO(114, 165, 246, 1),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'my_portfolio');
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image(
+                                image:
+                                    AssetImage('assets/images/portfolio.png'),
+                                height: 80,
+                                width: 80),
+                            Center(
+                              child: Text(
+                                'My Portfolio',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(0),
+                    color: Color.fromRGBO(114, 165, 246, 1),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'my_product');
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image(
+                                image: AssetImage('assets/images/products.png'),
+                                height: 80,
+                                width: 80),
+                            Center(
+                              child: Text(
+                                'My Product',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
                 ],
               ),
             )

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_aboutme/homePage.dart';
 import 'package:my_aboutme/myAge.dart';
 import 'package:my_aboutme/myMap.dart';
+import 'package:my_aboutme/myPortfolio.dart';
+import 'package:my_aboutme/myProduct.dart';
 import 'package:my_aboutme/profile.dart';
 import 'package:my_aboutme/videoPresentation.dart';
 
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
         'video_presentation':(BuildContext context) => VideoPresentation(),
         'my_map':(BuildContext context) => MyMap(),
         'my_age':(BuildContext context) => MyAge(),
+        'my_portfolio':(BuildContext context) => MyPortfolio(),
+        'my_product':(BuildContext context) => MyProduct(),
       },
     );
   }
