@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_aboutme/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,12 +10,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<void> logOut() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Home Page'),
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -28,6 +36,19 @@ class _HomePageState extends State<HomePage> {
                     leading: Icon(Icons.album),
                     title: Text('Welcome to my about me'),
                     subtitle: Text('WE679'),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      TextButton(
+                        child: Icon(Icons.logout),
+                        onPressed: () => {
+                          logOut(),
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Login()))
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
