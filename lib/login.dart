@@ -42,10 +42,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('My Product'),
-      ),
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
           child: SingleChildScrollView(
         child: Center(
