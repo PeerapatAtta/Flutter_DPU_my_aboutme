@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                     color: Color.fromRGBO(114, 165, 246, 1),
                     child: TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'my_portfolio');
+                          Navigator.pushNamed(context, 'blog');
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -181,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                                 width: 80),
                             Center(
                               child: Text(
-                                'My Portfolio',
+                                'Blog',
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,

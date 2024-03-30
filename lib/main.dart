@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:my_aboutme/blog.dart';
 import 'package:my_aboutme/homePage.dart';
 import 'package:my_aboutme/login.dart';
 import 'package:my_aboutme/myAge.dart';
@@ -28,8 +29,9 @@ class MyApp extends StatelessWidget {
         'video_presentation': (BuildContext context) => VideoPresentation(),
         'my_map': (BuildContext context) => MyMap(),
         'my_age': (BuildContext context) => MyAge(),
-        'my_portfolio': (BuildContext context) => MyPortfolio(),
+        //'my_portfolio': (BuildContext context) => MyPortfolio(),
         'my_product': (BuildContext context) => MyProduct(),
+        'blog': (BuildContext context) => Blog(),
       },
     );
   }
