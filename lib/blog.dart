@@ -68,7 +68,15 @@ class _BlogState extends State<Blog> {
                   alignment: MainAxisAlignment.end,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BlogDetail(
+                                    title: blogList[index]["title"],
+                                    description: blogList[index]["description"],
+                                    cover: blogList[index]["cover"])));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromRGBO(25, 177, 252, 1),
                       ),
