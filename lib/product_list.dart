@@ -89,11 +89,11 @@ class _ProductListState extends State<ProductList> {
                         leading: Icon(Icons.arrow_drop_down_circle),
                         title: Text(productList[index]["product_name"]),
                         subtitle:
-                            Text('Price: ${productList[index]["update_date"]}'),
+                            Text('Price: ${productList[index]["product_price"]}'),
                       ),
                       Padding(
                           padding: EdgeInsets.all(8.0),
-                          child: Text("Updated Date ")),
+                          child: Text("Updated Date ${productList[index]["update_date"]}")),
                       ButtonBar(
                         alignment: MainAxisAlignment.end,
                         children: [
