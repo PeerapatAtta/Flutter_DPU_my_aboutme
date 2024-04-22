@@ -61,9 +61,9 @@ class _ProductListState extends State<ProductList> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductFromCreate()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductFromCreate()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromARGB(255, 9, 210, 19),
@@ -88,17 +88,28 @@ class _ProductListState extends State<ProductList> {
                       ListTile(
                         leading: Icon(Icons.arrow_drop_down_circle),
                         title: Text(productList[index]["product_name"]),
-                        subtitle:
-                            Text('Price: ${productList[index]["product_price"]}'),
+                        subtitle: Text(
+                            'Price: ${productList[index]["product_price"]} THB'),
                       ),
                       Padding(
                           padding: EdgeInsets.all(8.0),
-                          child: Text("Updated Date ${productList[index]["update_date"]}")),
+                          child: Text(
+                              "Updated Date ${productList[index]["update_date"]}")),
                       ButtonBar(
                         alignment: MainAxisAlignment.end,
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProductDetail(
+                                          productName: productList[index]["product_name"],
+                                          productCover: productList[index]["product_cover"],
+                                          productDescription: productList[index]["product_description"],
+                                          productPrice: productList[index]["product_price"],
+                                          )));
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromRGBO(25, 177, 252, 1),
                             ),
@@ -118,5 +129,54 @@ class _ProductListState extends State<ProductList> {
         ],
       ),
     );
+  }
+}
+
+class ProductDetail extends StatefulWidget {
+  const ProductDetail({
+    super.key,
+    required this.productName,
+    required this.productCover,
+    required this.productDescription,
+    required this.productPrice,
+  });
+  final String productName;
+  final String productCover;
+  final String productDescription;
+  final String productPrice;
+
+  @override
+  State<ProductDetail> createState() => _ProductDetailState();
+}
+
+class _ProductDetailState extends State<ProductDetail> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.productName),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(8),
+            child: Card(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Image.network(widget.productCover),
+                  ListTile(
+                    title: Text(widget.productName),
+                    subtitle: Text(widget.productDescription),
+                  ),
+                  Text(
+                    'Price: ${widget.productPrice} THB',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 }
