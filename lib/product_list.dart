@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:my_aboutme/product_form_create.dart';
+import 'package:my_aboutme/product_update.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({super.key});
@@ -12,7 +13,7 @@ class ProductList extends StatefulWidget {
 class _ProductListState extends State<ProductList> {
   final dio = Dio();
   final baseApi =
-      "https://testpos.trainingzenter.com/lab_dpu/product/list/66130151?format=json";
+      "https://testpos.trainingzenter.com/lab_dpu/product/";
   late List productList = [];
 
   @override
@@ -24,7 +25,7 @@ class _ProductListState extends State<ProductList> {
   Future<void> getProduct() async {
     try {
       await dio
-          .get(baseApi,
+          .get("${baseApi}/list/66130151?format=json",
               options: Options(
                 headers: {
                   'Content-Type': 'application/json',
@@ -41,6 +42,22 @@ class _ProductListState extends State<ProductList> {
               });
     } catch (e) {
       if (!context.mounted) return;
+    }
+  }
+
+  Future<void> productDelete(productId) async {
+    try {
+      await dio
+          .delete("${baseApi}/update/$productId",
+              options: Options(
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                },
+              ))
+          .then((response) => {Navigator.pop(context,'Cancle'),getProduct()
+              });
+    } catch (e) {
     }
   }
 
@@ -99,15 +116,69 @@ class _ProductListState extends State<ProductList> {
                         alignment: MainAxisAlignment.end,
                         children: [
                           ElevatedButton(
+                            onPressed: () => showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: Text("Delete Data"),
+                                content: Text(
+                                    "Delete ${productList[index]["product_name"]}"),
+                                actions: <Widget>[
+                                  TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(context, 'Cancle'),
+                                      child: Text("Close")),
+                                  TextButton(
+                                      onPressed: () => {
+                                        productDelete(productList[index]["product_id"])
+
+                                      },
+                                      child: Text("OK")),
+
+                                ],
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 255, 0, 0),
+                            ),
+                            child: Text(
+                              'Delete',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProductUpdate(
+                                            productId: productList[index]
+                                                    ["product_id"]
+                                                .toString(),
+                                          )));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromRGBO(25, 177, 252, 1),
+                            ),
+                            child: Text(
+                              'Update',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => ProductDetail(
-                                          productName: productList[index]["product_name"],
-                                          productCover: productList[index]["product_cover"],
-                                          productDescription: productList[index]["product_description"],
-                                          productPrice: productList[index]["product_price"],
+                                            productName: productList[index]
+                                                ["product_name"],
+                                            productCover: productList[index]
+                                                ["product_cover"],
+                                            productDescription:
+                                                productList[index]
+                                                    ["product_description"],
+                                            productPrice: productList[index]
+                                                ["product_price"],
                                           )));
                             },
                             style: ElevatedButton.styleFrom(
