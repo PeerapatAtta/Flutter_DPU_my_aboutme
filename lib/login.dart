@@ -21,8 +21,7 @@ class _LoginState extends State<Login> {
       });
     }
 
-    if (usernameController.text == 'harry' &&
-        passwordController.text == '12345') {
+    if (usernameController.text == 'off' && passwordController.text == '1234') {
       setPreferences(1);
     } else {
       setState(() {
@@ -49,18 +48,18 @@ class _LoginState extends State<Login> {
           child: Column(
             children: <Widget>[
               Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(5.0),
                   child: Image(
-                    image: AssetImage('assets/images/user.png'),
-                    width: 100,
-                    height: 100,
+                    image: AssetImage('assets/images/tiger1.png'),
+                    width: 220,
+                    height: 220,
                   )),
-              SizedBox(
-                height: 25,
-              ),
               Text(
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                   'My About Me App'),
+              SizedBox(
+                height: 20,
+              ),
               if (msg != "")
                 Padding(
                   padding: EdgeInsets.all(8.0),
